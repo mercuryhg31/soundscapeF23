@@ -26,3 +26,5 @@
 10. Run the website from the `/frontend` folder
 11. Run `npm install` and then `npm run start` to run the website
     **NOTE**: Google and install any modules that `python manage.py makemigrations` tells you cannot be found
+    1. If you see a bunch of vulnerabilities you can run `npm audit fix --force` until you have 8 vulnerabilities instead
+       (Looks kinda like this: `"131 vulnerabilities (1 low, 104 moderate, 22 high, 4 critical)"`
