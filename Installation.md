@@ -31,7 +31,33 @@
 
 7. Create a folder called `/.auth` in `/backend`.
 
-8. Create a file called `me.json` in `/.auth` folder (just have "`{}`" inside the file, we've left it empty for now).
+8. Create a file called `me.json` in `/.auth` folder. This is the format with some dummy values:
+
+```
+[
+   {
+   "user_claims": [
+      {
+         "typ": "http://schemas.microsoft.com/identity/claims/objectidentifier",
+         "val": "123vhjvjh45"
+      },
+      {
+         "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+         "val": "users@example.com" 
+      },
+      {
+         "typ": "name",
+         "val": "John Doe" 
+      },
+      {
+         "typ": "preferred_username",
+         "val": "johndoe" 
+      }
+   ],
+   "id_token": "some_id_token_value"
+   }
+]
+```
 
 9. Navigate out of `/backend` and over to `/frontend`.
 
