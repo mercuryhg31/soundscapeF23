@@ -1,14 +1,17 @@
 # Installation And Setup Process Documentation
 
 ## Table of Contents
+ - [Starting Out](#starting-out)
  - [Backend](#backend)
    - [Issues & Fixes](#issues--fixes)
       - [The infamous "psycopg issue"](#the-infamous-psycopg-issue)
  - [Frontend](#frontend)
 
+## Starting Out
+
 1. Clone [microsoft/soundscape](https://www.github.com/microsoft/soundscape)
    - We recommend making a fork on GitHub and then cloning that so that you have your own repository you have access to write to.
-- Follow the backend directions in `docs/authoring-web-client/onboarding.md`. (Now included down below and integrated with our alterations.)
+2. Follow the backend directions in `docs/authoring-web-client/onboarding.md`. (Now included down below and integrated with our alterations.)
 
 ## Backend
 
