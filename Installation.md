@@ -29,7 +29,7 @@
    - set `DJANGO_SECRET_KEY=""` after receiving it from someone (**same as above do not commit**)
 
 5a. Export all variables in the `.env` file. (**NEW WAY**)
-   - First, remove all the comments in the .env files and leave no empty spaces. It will have only the variables and their values. Also, put a new line (EnNTER) after each variable. It should look like the following:
+   - First, remove all the comments in the .env files and leave no empty spaces. It will have only the variables and their values. Also, put a new line (ENTER) after each variable. It should look like the following:
      ```
      ENV=production
      newline
