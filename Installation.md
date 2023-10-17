@@ -1,4 +1,10 @@
-# Installation And Setup
+# Installation And Setup Process Documentation
+
+## Table of Contents
+ - [Backend](#backend)
+   - [Issues & Fixes](#issues--fixes)
+      - [The infamous "psycopg issue"](#the-infamous-psycopg-issue)
+ - [Frontend](#frontend)
 
 1. Clone [microsoft/soundscape](https://www.github.com/microsoft/soundscape)
    - We recommend making a fork on GitHub and then cloning that so that you have your own repository you have access to write to.
