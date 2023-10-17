@@ -61,6 +61,18 @@
 
 9. Navigate out of `/backend` and over to `/frontend`.
 
+### Issues & Fixes
+
+#### The infamous "psycopg issue"
+This is for Windows Ubuntu.
+
+![Alt text](image.png)
+![Alt text](image-1.png)
+![Alt text](image-2.png)
+![Alt text](image-3.png)
+![Alt text](image-4.png)
+![Alt text](image-5.png)
+
 ## Frontend
 
 1. Run `npm install` and then `npm run start` to run the website
