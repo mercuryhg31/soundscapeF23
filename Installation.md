@@ -23,24 +23,41 @@
 
 4. Fill in the needed properties as shown in the `.env` file.
 
-   - set `DJANGO_SETTINGS_MODULE = "backend.settings.local"` and run `export DJANGO_SETTINGS_MODULE="backend.settings.local"`
-   - set `ENV = "local"` and run `export ENV="local"`
-   - set and export `AZURE_MAPS_SUBSCRIPTION_KEY = ""` as well; you'll need to get the key from someone (**DO NOT EVER COMMIT THIS KEY**)
-   - set and export `DJANGO_SECRET_KEY=""` after receiving it from someone (**same as above do not commit**)
-5. Run:
+   - set `DJANGO_SETTINGS_MODULE = "backend.settings.local"`
+   - set `ENV = "local"`
+   - set `AZURE_MAPS_SUBSCRIPTION_KEY = ""` as well; you'll need to get the key from someone (**DO NOT EVER COMMIT THIS KEY**)
+   - set `DJANGO_SECRET_KEY=""` after receiving it from someone (**same as above do not commit**)
+
+5a. Export all variables in the `.env` file. (**NEW WAY**)
+   - First, remove all the comments in the .env files and leave no empty spaces. It will have only the variables and their values. Also, put a new line (EnNTER) after each variable. It should look like the following:
+     ```
+     ENV=production
+     newline
+     DJANGO_SETTINGS_MODULE=backend.settings.local
+     ...
+     ```
+   - Next, run this in the WSL terminal in the backend folder `export $(xargs <.env/local.env)`
+
+5b. Export all variables in the '.env' file. (**OLD WAY**)
+  - set `DJANGO_SETTINGS_MODULE="backend.settings.local"` and run `export DJANGO_SETTINGS_MODULE="backend.settings.local"`
+  - set `ENV="local"` and run `export ENV="local"`
+  - set and export `AZURE_MAPS_SUBSCRIPTION_KEY=""` as well; you'll need to get the key from someone (DO NOT EVER COMMIT THIS KEY)
+  - set and export `DJANGO_SECRET_KEY=""` after receiving it from someone (same as above do not commit)
+
+6. Run:
 
    (**NOTE**: Google and install any modules that `python manage.py makemigrations` tells you cannot be found)
 
    1. `python manage.py makemigrations`
    2. `python manage.py makemigrations api`
    3. `python manage.py migrate`
-6. In the folder `/backend/.env`:
+7. In the folder `/backend/.env`:
 
    1. Create the files `local.env`, `development.env` and `production.env` (You can copy everything from the base .env into these)
 
-7. Create a folder called `/.auth` in `/backend`.
+8. Create a folder called `/.auth` in `/backend`.
 
-8. Create a file called `me.json` in `/.auth` folder. This is the format with some dummy values:
+9. Create a file called `me.json` in `/.auth` folder. This is the format with some dummy values:
 
 ```
 [
@@ -68,7 +85,7 @@
 ]
 ```
 
-9. Navigate out of `/backend` and over to `/frontend`.
+10. Navigate out of `/backend` and over to `/frontend`.
 
 ### Issues & Fixes
 
