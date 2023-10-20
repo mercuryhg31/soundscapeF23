@@ -5,6 +5,9 @@
  - [Backend](#backend)
    - [Issues & Fixes](#issues--fixes)
       - [The infamous "psycopg issue"](#the-infamous-psycopg-issue)
+      - [`ModuleNotFoundError: No module named 'azure'` issue](#modulenotfounderror-no-module-named-azure-issue)
+      - [Having trouble changing default python versions](#having-trouble-changing-default-python-versions)
+      - [`/email` error and others with backend server](#email-error-and-others-with-backend-server)
  - [Frontend](#frontend)
 
 ## Starting Out
@@ -43,6 +46,7 @@
   - set `ENV="local"` and run `export ENV="local"`
   - set and export `AZURE_MAPS_SUBSCRIPTION_KEY=""` as well; you'll need to get the key from someone (DO NOT EVER COMMIT THIS KEY)
   - set and export `DJANGO_SECRET_KEY=""` after receiving it from someone (same as above do not commit)
+  - set and export `X_MS_TOKEN_AAD_ID_TOKEN=""`. This key is unique to you and will be generated when you sign up on the Soundscape Community website (again, never commit).
 
 6. Run:
 
@@ -51,6 +55,7 @@
    1. `python manage.py makemigrations`
    2. `python manage.py makemigrations api`
    3. `python manage.py migrate`
+
 7. In the folder `/backend/.env`:
 
    1. Create the files `local.env`, `development.env` and `production.env` (You can copy everything from the base .env into these)
@@ -85,11 +90,13 @@
 ]
 ```
 
-10. Navigate out of `/backend` and over to `/frontend`.
+10. To run the backend server, run `python manage.py runserver`.
+
+11. Navigate out of `/backend` and over to `/frontend`.
 
 ### Issues & Fixes
 
-#### The infamous "psycopg issue"
+#### The infamous _"psycopg issue"_
 This is for Windows Ubuntu.
 
 ![Alt text](psycopg_issue/image.png)
@@ -98,6 +105,20 @@ This is for Windows Ubuntu.
 ![Alt text](psycopg_issue/image-3.png)
 ![Alt text](psycopg_issue/image-4.png)
 ![Alt text](psycopg_issue/image-5.png)
+
+#### `ModuleNotFoundError: No module named 'azure'` issue
+
+As best as we can tell, something is probably wrong or missing when you created your virtual environment (`.venv`). Try deleting that folder and recreating it. Make sure to wait until the command is finished running and exists out on its own. After that try redoing the [backend instructions](#backend) and you shouldn't run into this problem again.
+
+**TIP**: Also double check what python versions you may be using. The original onboarding document uses `python3` for generating the `.venv` directory - make sure that the python version for that matches with `python` (just check that `python3 --version` and `python --version` both output the same version).
+
+#### Having trouble changing default python versions
+
+[Check this out](https://unix.stackexchange.com/questions/410579/change-the-python3-default-version-in-ubuntu)
+
+#### `/email` error and others with backend server
+
+Once you've got the backend server up and running, you may open it and find that it's giving you an issue specifically in the `backend/backend/middleware/UserParseMiddleware.py` file. Remember those dummy values in `/.auth/me.json`? Just plug in those values after the `=` sign for whichever attributes the server is giving you trouble with.
 
 ## Frontend
 
