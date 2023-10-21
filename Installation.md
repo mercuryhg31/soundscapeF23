@@ -1,14 +1,15 @@
 # Installation And Setup Process Documentation
 
 ## Table of Contents
- - [Starting Out](#starting-out)
- - [Backend](#backend)
-   - [Issues & Fixes](#issues--fixes)
-      - [The infamous "psycopg issue"](#the-infamous-psycopg-issue)
-      - [`ModuleNotFoundError: No module named 'azure'` issue](#modulenotfounderror-no-module-named-azure-issue)
-      - [Having trouble changing default python versions](#having-trouble-changing-default-python-versions)
-      - [`/email` error and others with backend server](#email-error-and-others-with-backend-server)
- - [Frontend](#frontend)
+
+- [Starting Out](#starting-out)
+- [Backend](#backend)
+  - [Issues &amp; Fixes](#issues--fixes)
+    - [The infamous &#34;psycopg issue&#34;](#the-infamous-psycopg-issue)
+    - [`ModuleNotFoundError: No module named 'azure'` issue](#modulenotfounderror-no-module-named-azure-issue)
+    - [Having trouble changing default python versions](#having-trouble-changing-default-python-versions)
+    - [`/email` error and others with backend server](#email-error-and-others-with-backend-server)
+- [Frontend](#frontend)
 
 ## Starting Out
 
@@ -19,11 +20,8 @@
 ## Backend
 
 1. In the `/backend` folder, if there is no virtual environment (`.venv`), create one and select it as the default Python interpreter in VSCode. Run `python3 -m venv .venv`.
-
 2. If the Python packages are not installed, run `pip install -r requirements.txt`.
-
 3. Go to `backend/.env` and rename `example.env` to just `.env`
-
 4. Fill in the needed properties as shown in the `.env` file.
 
    - set `DJANGO_SETTINGS_MODULE = "backend.settings.local"`
@@ -32,21 +30,23 @@
    - set `DJANGO_SECRET_KEY=""` after receiving it from someone (**same as above do not commit**)
 
 5a. Export all variables in the `.env` file. (**NEW WAY**)
-   - First, remove all the comments in the .env files and leave no empty spaces. It will have only the variables and their values. Also, put a new line (ENTER) after each variable. It should look like the following:
-     ```
-     ENV=production
-     newline
-     DJANGO_SETTINGS_MODULE=backend.settings.local
-     ...
-     ```
-   - Next, run this in the WSL terminal in the backend folder `export $(xargs <.env/local.env)`
+
+- First, remove all the comments in the .env files and leave no empty spaces. It will have only the variables and their values. Also, put a new line (ENTER) after each variable. It should look like the following:
+  ```
+  ENV=production
+  newline
+  DJANGO_SETTINGS_MODULE=backend.settings.local
+  ...
+  ```
+- Next, run this in the WSL terminal in the backend folder `export $(xargs <.env/local.env)`
 
 5b. Export all variables in the '.env' file. (**OLD WAY**)
-  - set `DJANGO_SETTINGS_MODULE="backend.settings.local"` and run `export DJANGO_SETTINGS_MODULE="backend.settings.local"`
-  - set `ENV="local"` and run `export ENV="local"`
-  - set and export `AZURE_MAPS_SUBSCRIPTION_KEY=""` as well; you'll need to get the key from someone (DO NOT EVER COMMIT THIS KEY)
-  - set and export `DJANGO_SECRET_KEY=""` after receiving it from someone (same as above do not commit)
-  - set and export `X_MS_TOKEN_AAD_ID_TOKEN=""`. This key is unique to you and will be generated when you sign up on the Soundscape Community website (again, never commit).
+
+- set `DJANGO_SETTINGS_MODULE="backend.settings.local"` and run `export DJANGO_SETTINGS_MODULE="backend.settings.local"`
+- set `ENV="local"` and run `export ENV="local"`
+- set and export `AZURE_MAPS_SUBSCRIPTION_KEY=""` as well; you'll need to get the key from someone (DO NOT EVER COMMIT THIS KEY)
+- set and export `DJANGO_SECRET_KEY=""` after receiving it from someone (same as above do not commit)
+- set and export `X_MS_TOKEN_AAD_ID_TOKEN=""`. This key is unique to you and will be generated when you sign up on the Soundscape Community website (again, never commit).
 
 6. Run:
 
@@ -55,13 +55,10 @@
    1. `python manage.py makemigrations`
    2. `python manage.py makemigrations api`
    3. `python manage.py migrate`
-
 7. In the folder `/backend/.env`:
 
    1. Create the files `local.env`, `development.env` and `production.env` (You can copy everything from the base .env into these)
-
 8. Create a folder called `/.auth` in `/backend`.
-
 9. Create a file called `me.json` in `/.auth` folder. This is the format with some dummy values:
 
 ```
@@ -91,12 +88,12 @@
 ```
 
 10. To run the backend server, run `python manage.py runserver`.
-
 11. Navigate out of `/backend` and over to `/frontend`.
 
 ### Issues & Fixes
 
 #### The infamous _"psycopg issue"_
+
 This is for Windows Ubuntu.
 
 ![Alt text](psycopg_issue/image.png)
@@ -123,13 +120,16 @@ Once you've got the backend server up and running, you may open it and find that
 ## Frontend
 
 1. Run `npm install` and then `npm run start` to run the website
-   
-    **NOTE**: Google and install any modules that `python manage.py makemigrations` tells you cannot be found
 
-    1. If you see a bunch of vulnerabilities you can run `npm audit fix --force` until you have 8 vulnerabilities instead (Looks kinda like this: `"131 vulnerabilities (1 low, 104 moderate, 22 high, 4 critical)"`
+   **NOTE**: Google and install any modules that `python manage.py makemigrations` tells you cannot be found
 
+   1. If you see a bunch of vulnerabilities you can run `npm audit fix --force` until you have 8 vulnerabilities instead (Looks kinda like this: `"131 vulnerabilities (1 low, 104 moderate, 22 high, 4 critical)"`
 2. Follow the instruction [here](https://tailwindcss.com/docs/installation) to install Tailwind CSS.
 
-    1. For step 2 of the guide, your head CSS file is located at `"./src/index.css"`
-    2. For step 4 of the guide, replace "input.css" and "output.css" with "index.css"
-    3. For step 5, add `<link href="/dist/output.css" rel="stylesheet">` to `"/public/index.html"`
+   1. For step 2 of the guide, your head CSS file is located at `"./src/index.css"`
+   2. For step 4 of the guide, replace "input.css" and "output.css" with "index.css"
+   3. For step 5, add `<link href="/dist/output.css" rel="stylesheet">` to `"/public/index.html"`
+3. Run python manage.py runserver to run the website
+
+   1. If you come across a key error, modify `user_email = request.aad_user.get('email', ' ').lower() `to `user_email="some stirng"`
+   2. If you come across an authentication/access error, at the time of writing, simply comment out the processing statements for authentication (the following two if-statements)
