@@ -128,8 +128,7 @@ Once you've got the backend server up and running, you may open it and find that
 
    1. For step 2 of the guide, your head CSS file is located at `"./src/index.css"`
    2. For step 4 of the guide, replace "input.css" and "output.css" with "index.css"
-   3. For step 5, add `<link href="/dist/output.css" rel="stylesheet">` to `"/public/index.html"`
-3. Run python manage.py runserver to run the website
+   3. For step 5, add `<link href="/dist/output.css" rel="stylesheet">` to `"/public/index.html"
 
    1. If you come across a key error, modify `user_email = request.aad_user.get('email', ' ').lower() `to `user_email="some stirng"`
    2. If you come across an authentication/access error, at the time of writing, simply comment out the processing statements for authentication (the following two if-statements)
