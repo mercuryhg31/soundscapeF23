@@ -129,6 +129,13 @@ Once you've got the backend server up and running, you may open it and find that
    1. For step 2 of the guide, your head CSS file is located at `"./src/index.css"`
    2. For step 4 of the guide, replace "input.css" and "output.css" with "index.css"
    3. For step 5, add `<link href="/dist/output.css" rel="stylesheet">` to `"/public/index.html"
+   4. If you come across a key error, modify `user_email = request.aad_user.get('email', ' ').lower() `to `user_email="some stirng"`
+   5. If you come across an authentication/access error, at the time of writing, simply comment out the processing statements for authentication (the following two if-statements)
 
-   1. If you come across a key error, modify `user_email = request.aad_user.get('email', ' ').lower() `to `user_email="some stirng"`
-   2. If you come across an authentication/access error, at the time of writing, simply comment out the processing statements for authentication (the following two if-statements)
+## Development
+
+1. Run python manage.py runserver
+2. For API request errors (temporary workaround):
+   1. Make sure you are using local development (local.env)
+   2. In `api/views.py`, in all instances of `user_id = self.request.aad_user['id']`, set user_id to a random string
+   3. Run server again. API errors should be resovled.
